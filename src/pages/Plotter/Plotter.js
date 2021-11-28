@@ -1,4 +1,4 @@
-import Columns from '../../components/Columns';
+import Columns from '../../components/Columns/Columns';
 import PlotData from '../../components/PlotData/PlotData';
 import Plot from '../../components/Plot';
 import { Container, PlotAreaWrapper, ColumnsWrapper } from './Plotter.style';

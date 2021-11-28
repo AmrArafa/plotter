@@ -1,7 +1,8 @@
 import styled from 'styled-components';
 
-export const Wrapper = styled.div`
+export const Container = styled.div`
     display: flex;
+    margin-bottom: 10px;
 
     p {
         width: 10%;
@@ -12,13 +13,11 @@ export const FieldWrapper = styled.div`
     width: 90%;
     display: flex;
     border: 1px solid;
-    margin-bottom: 10px;
+    align-items: center;
+    padding: 0 5px;
 
     div {
-        width: 90%;
-    }
-
-    button {
-        width: 10%;
+        padding: 6px;
+        border: 1px solid;
     }
 `;
