@@ -11,10 +11,11 @@ function App() {
     const initialState = {
         columns: [],
         dimension: [],
-        measure: []
+        measure: [],
+        chartData: []
     };
 
-    const [ state, setState ] = useState(initialState)
+    const [ state, setState ] = useState(initialState);
 
     const onDragEnd = result => {
         const { destination, source, draggableId } = result;
@@ -34,6 +35,14 @@ function App() {
         if (JSON.parse(draggableId).function !== destination.droppableId &&
             destination.droppableId !== 'columns') {
             return;
+        }
+
+        if ((source.droppableId === 'dimension' || source.droppableId === 'measure') &&
+            destination.droppableId === 'columns') {
+                setState({
+                    ...state,
+                    chartData: []
+                });
         }
 
         start.splice(source.index, 1);

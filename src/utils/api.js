@@ -5,5 +5,7 @@ export const useColumns = () => {
     return useQuery('columns', async () => {
         const { data } = await axios.get('https://plotter-task.herokuapp.com/columns');
         return data;
+    }, {
+        refetchOnWindowFocus: false
     });
 };

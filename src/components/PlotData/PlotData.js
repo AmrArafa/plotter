@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import { useContext } from 'react';
 import { Container, FieldWrapper } from './PlotData.style';
 import { StateContext } from '../../App';
 import { Droppable, Draggable } from 'react-beautiful-dnd';
@@ -6,17 +6,19 @@ import { Droppable, Draggable } from 'react-beautiful-dnd';
 const PlotData = () => {
     const { state, setState } = useContext(StateContext);
 
-    const { dimension, measure } = state;
+    const { dimension, measure, columns } = state;
 
     const handleClear = event => {
         if (event.target.id === 'measure') {
             setState({
                 ...state,
+                columns: [...columns, ...measure],
                 measure: []
             });
         } else {
             setState({
                 ...state,
+                columns: [...columns, ...dimension],
                 dimension: []
             });
         }

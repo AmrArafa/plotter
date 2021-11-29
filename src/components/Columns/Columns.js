@@ -7,7 +7,7 @@ import { ColumnsList, Column } from './Columns.style';
 const Columns = () => {
     const { state, setState } = useContext(StateContext);
 
-    const { isLoading, isError, data, error } = useColumns();
+    const { isLoading, isError, data, error } = useColumns(state.columns);
 
     useEffect(() => {
         if (data) {
@@ -19,7 +19,7 @@ const Columns = () => {
 
     if (isLoading) return <span>Loading...</span>;
 
-    if (isError) return <span>Error: {error.message}</span>;
+    if (isError) return <span>Error: {error}</span>;
 
     return (
         <>
