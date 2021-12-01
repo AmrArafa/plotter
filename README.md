@@ -3,11 +3,11 @@
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 Libraries used:
 
-"axios" to handle API calls (https://axios-http.com/)
-"react-query" to handle server state (https://react-query.tanstack.com/)
-"react-beautiful-dnd" to handle drag and drop functionality (https://github.com/atlassian/react-beautiful-dnd)
-"recharts" to handle rendering plots (https://recharts.org/en-US)
-"styled-components" to handle styling (https://styled-components.com/)
+"axios" to handle API calls (https://axios-http.com/).\
+"react-query" to handle server state (https://react-query.tanstack.com/).\
+"react-beautiful-dnd" to handle drag and drop functionality (https://github.com/atlassian/react-beautiful-dnd).\
+"recharts" to handle rendering plots (https://recharts.org/en-US).\
+"styled-components" to handle styling (https://styled-components.com/).\
 
 ## Available Scripts
 
