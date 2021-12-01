@@ -13,7 +13,7 @@ const Plot = () => {
 
     const { dimension, measure, chartData } = state;
 
-    const { isLoading, isError, error, data } = mutation;
+    const { isLoading, isError, error } = mutation;
 
     const prepareChartData = chartData => {
         if (chartData.length === 0) return null;
@@ -30,18 +30,20 @@ const Plot = () => {
     };
 
     useEffect(() => {
-        if (dimension.length > 0 && measure.length > 0 && !data) {
+        if (dimension.length > 0 && measure.length > 0) {
             const params = {
                 measures: measure.map(measure => measure.name),
                 dimension: dimension[0].name
             };
-            mutation.mutateAsync(params, {
-                onSuccess: response => {
-                    setState({...state, chartData: response.data});
-                }
-            });
+            if (chartData.length === 0) {
+                mutation.mutateAsync(params, {
+                    onSuccess: response => {
+                        setState({ ...state, chartData: response.data });
+                    }
+                });
+            }
         }
-    }, [ state, data ]);
+    }, [state]);
 
     if (isLoading) return <span>Loading...</span>;
 
@@ -49,7 +51,7 @@ const Plot = () => {
 
     return (
         <>
-            {prepareChartData(chartData) && dimension.length > 0 && measure.length > 0
+            {chartData.length > 0
                 ? (<LineChart
                         width={900}
                         height={700}
@@ -60,7 +62,6 @@ const Plot = () => {
                             type="linear"
                             dataKey={measure[0].name}
                             stroke="#8884d8"
-                            dot={true}
                         />
                         <CartesianGrid stroke="#ccc" strokeDasharray="5 5" />
                         <XAxis

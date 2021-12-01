@@ -13,13 +13,15 @@ const PlotData = () => {
             setState({
                 ...state,
                 columns: [...columns, ...measure],
-                measure: []
+                measure: [],
+                chartData: []
             });
         } else {
             setState({
                 ...state,
                 columns: [...columns, ...dimension],
-                dimension: []
+                dimension: [],
+                chartData: []
             });
         }
     }

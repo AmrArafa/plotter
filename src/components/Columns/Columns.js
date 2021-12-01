@@ -3,11 +3,14 @@ import { useColumns } from '../../utils/api';
 import { Droppable, Draggable } from 'react-beautiful-dnd';
 import { StateContext } from '../../App';
 import { ColumnsList, Column } from './Columns.style';
+import ReactTooltip from 'react-tooltip';
 
 const Columns = () => {
     const { state, setState } = useContext(StateContext);
 
-    const { isLoading, isError, data, error } = useColumns(state.columns);
+    const { columns } = state;
+
+    const { isLoading, isError, data, error } = useColumns();
 
     useEffect(() => {
         if (data) {
@@ -27,7 +30,7 @@ const Columns = () => {
             <Droppable droppableId="columns">
                 {provided => (
                     <ColumnsList {...provided.droppableProps} ref={provided.innerRef}>
-                        {data.map((column, index) => {
+                        {columns.map((column, index) => {
                             return (
                                 <Draggable
                                     key={column.name}
@@ -35,14 +38,18 @@ const Columns = () => {
                                     index={index}
                                 >
                                     {provided => (
-                                        <Column
-                                            title={column.function}
-                                            ref={provided.innerRef}
-                                            {...provided.draggableProps}
-                                            {...provided.dragHandleProps}
-                                        >
-                                            {column.name}
-                                        </Column>
+                                        <>
+                                            <Column
+                                                data-tip={column.function}
+                                                data-place="right"
+                                                ref={provided.innerRef}
+                                                {...provided.draggableProps}
+                                                {...provided.dragHandleProps}
+                                            >
+                                                {column.name}
+                                            </Column>
+                                            <ReactTooltip />
+                                        </>
                                     )}
                                 </Draggable>
                             )

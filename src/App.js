@@ -37,22 +37,23 @@ function App() {
             return;
         }
 
-        if ((source.droppableId === 'dimension' || source.droppableId === 'measure') &&
-            destination.droppableId === 'columns') {
-                setState({
-                    ...state,
-                    chartData: []
-                });
-        }
-
         start.splice(source.index, 1);
         finish.splice(destination.index, 0, JSON.parse(draggableId));
 
-        setState({
-            ...state,
-            [source.droppableId]: start,
-            [destination.droppableId]: finish
-        });
+        if (source.droppableId !== 'columns' && destination.droppableId === 'columns') {
+            setState({
+                ...state,
+                [source.droppableId]: start,
+                [destination.droppableId]: finish,
+                chartData: []
+            });
+        } else {
+            setState({
+                ...state,
+                [source.droppableId]: start,
+                [destination.droppableId]: finish
+            });
+        }
     };
 
     return (
