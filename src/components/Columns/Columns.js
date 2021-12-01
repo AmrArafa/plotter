@@ -2,7 +2,7 @@ import { useContext, useEffect } from 'react';
 import { useColumns } from '../../utils/api';
 import { Droppable, Draggable } from 'react-beautiful-dnd';
 import { StateContext } from '../../App';
-import { ColumnsList, Column } from './Columns.style';
+import { ColumnsTitle, ColumnsList, Column } from './Columns.style';
 import ReactTooltip from 'react-tooltip';
 
 const Columns = () => {
@@ -26,7 +26,7 @@ const Columns = () => {
 
     return (
         <>
-            <h2>Columns</h2>
+            <ColumnsTitle>Columns</ColumnsTitle>
             <Droppable droppableId="columns">
                 {provided => (
                     <ColumnsList {...provided.droppableProps} ref={provided.innerRef}>
