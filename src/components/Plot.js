@@ -77,7 +77,7 @@ const Plot = () => {
                         />
                         <Tooltip />
                     </LineChart>)
-                : <p>Please drag 1 column into each of the fields above to generate the plot.</p>
+                : <p>Please drag 1 column into each of the fields above to generate a plot. Columns can also be dragged back to their area, or cleared by clicking the "Clear" button.</p>
             }
         </>
     );
